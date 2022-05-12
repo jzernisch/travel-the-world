@@ -5,6 +5,7 @@
 1. Ruby 3
 1. NodeJS (latest stable)
 1. PostgreSQL (latest)
+1. Redis (latest)
 
 ## Create database
 
@@ -12,4 +13,4 @@
 
 ## Start development server
 
-`rails s`
+`bin/dev`
