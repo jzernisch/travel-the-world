@@ -10,8 +10,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     bash \
     git \
     nodejs \
+    npm \
     postgresql-client \
     tzdata
+
+RUN npm install --global yarn
 
 WORKDIR /app
 
