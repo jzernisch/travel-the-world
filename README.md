@@ -25,35 +25,35 @@ each time code changes (but one must do that when Gemfiles are updated).
 To build the environment (feel free to set up aliases in case you work a lot with this repo):
 
 ```bash
-docker-compose -f docker-compose.dev.yml build
+docker-compose -f docker-compose.yml build
 ```
 
 To start Rails development server:
 
 ```bash
-docker-compose -f docker-compose.dev.yml up
+docker-compose up
 ```
 
 To run tests:
 
 ```bash
-docker-compose -f docker-compose.dev.yml run app test
+docker-compose run app test
 ```
 
 To run Bash shell:
 
 ```bash
-docker-compose -f docker-compose.dev.yml run app shell
+docker-compose run app shell
 ```
 
 To start Rails console:
 
 ```bash
-docker-compose -f docker-compose.dev.yml run app console
+docker-compose run app console
 ```
 
 To stop development server and clean up everything:
 
 ```bash
-docker-compose -f docker-compose.dev.yml down --remove-orphans
+docker-compose down --remove-orphans
 ```
