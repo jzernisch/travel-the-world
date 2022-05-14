@@ -25,7 +25,7 @@ each time code changes (but one must do that when Gemfiles are updated).
 To build the environment (feel free to set up aliases in case you work a lot with this repo):
 
 ```bash
-docker-compose -f docker-compose.yml build
+docker-compose build
 ```
 
 To start Rails development server:
