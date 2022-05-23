@@ -27,3 +27,5 @@ services:
 
   chrome-server:
     image: selenium/standalone-chrome:96.0
+    ports:
+      - "7900:7900" # VNC client
