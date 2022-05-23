@@ -27,13 +27,13 @@ each time code changes (but one must do that when Gemfiles are updated).
 To build the environment (feel free to set up aliases in case you work a lot with this repo):
 
 ```bash
-docker-compose build
+docker compose build
 ```
 
 To start Rails development server:
 
 ```bash
-docker-compose up
+docker compose up
 ```
 
 To run tests:
