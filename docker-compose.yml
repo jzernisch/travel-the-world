@@ -1,6 +1,19 @@
-version: '3'
-
 services:
+  app:
+    build: .
+    environment:
+      - LOCAL_DATABASE_HOST=postgres
+      - RAILS_ENV=development
+      - REDIS_URL=redis://redis:6379/0
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+    command: rails s -b 0.0.0.0
+    depends_on:
+      - postgres
+      - redis
+
   postgres:
     image: postgres
     environment:
@@ -10,18 +23,3 @@ services:
 
   redis:
     image: redis
-
-  app:
-    build:
-      context: .
-    environment:
-      - LOCAL_DATABASE_HOST=postgres
-      - RAILS_ENV=development
-      - REDIS_URL=redis://redis:6379/0
-    volumes:
-      - .:/app
-    ports:
-      - "3000:3000"
-    depends_on:
-      - postgres
-      - redis
