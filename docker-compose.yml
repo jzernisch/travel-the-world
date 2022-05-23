@@ -8,11 +8,12 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - .:/usr/src/app
+      - .:/app
     command: rails s -b 0.0.0.0
     depends_on:
       - postgres
       - redis
+      - chrome-server
 
   postgres:
     image: postgres
@@ -23,3 +24,6 @@ services:
 
   redis:
     image: redis
+
+  chrome-server:
+    image: selenium/standalone-chrome:96.0
