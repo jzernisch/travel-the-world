@@ -7,6 +7,8 @@
 1. PostgreSQL (latest)
 1. Redis (latest)
 
+Also see below for a `docker compose`-based setup.
+
 ## Create database
 
 `rails db:create`
@@ -37,23 +39,12 @@ docker-compose up
 To run tests:
 
 ```bash
-docker-compose run app test
+docker-compose run app bin/rails test
 ```
 
-To run Bash shell:
+To run system tests:
 
 ```bash
-docker-compose run app shell
+docker compose run app bin/rails test:system
 ```
 
-To start Rails console:
-
-```bash
-docker-compose run app console
-```
-
-To stop development server and clean up everything:
-
-```bash
-docker-compose down --remove-orphans
-```
