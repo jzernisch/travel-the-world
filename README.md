@@ -39,7 +39,7 @@ docker compose up
 To run tests:
 
 ```bash
-docker-compose run app bin/rails test
+docker compose run app bin/rails test
 ```
 
 To run system tests:
