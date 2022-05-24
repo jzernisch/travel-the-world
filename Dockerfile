@@ -27,5 +27,4 @@ RUN bundle install
 
 COPY . ./
 
-RUN bundle exec rake assets:precompile
 
