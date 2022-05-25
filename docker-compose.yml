@@ -21,7 +21,7 @@ services:
       - POSTGRES_USER=root
       - POSTGRES_HOST_AUTH_METHOD=trust
     volumes:
-      - ./data:/var/lib/postgresql/data
+      - postgres-volume:/var/lib/postgresql/data
 
   redis:
     image: redis
@@ -30,3 +30,7 @@ services:
     image: selenium/standalone-chrome:96.0
     ports:
       - "7900:7900" # VNC client
+
+volumes:
+  postgres-volume:
+
