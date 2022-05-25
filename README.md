@@ -7,6 +7,8 @@
 1. PostgreSQL (latest)
 1. Redis (latest)
 
+Also see below for a `docker compose`-based setup.
+
 ## Create database
 
 `rails db:create`
@@ -25,35 +27,24 @@ each time code changes (but one must do that when Gemfiles are updated).
 To build the environment (feel free to set up aliases in case you work a lot with this repo):
 
 ```bash
-docker-compose build
+docker compose build
 ```
 
 To start Rails development server:
 
 ```bash
-docker-compose up
+docker compose up
 ```
 
 To run tests:
 
 ```bash
-docker-compose run app test
+docker compose run app bin/rails test
 ```
 
-To run Bash shell:
+To run system tests:
 
 ```bash
-docker-compose run app shell
+docker compose run app bin/rails test:system
 ```
 
-To start Rails console:
-
-```bash
-docker-compose run app console
-```
-
-To stop development server and clean up everything:
-
-```bash
-docker-compose down --remove-orphans
-```

@@ -1,27 +1,36 @@
-version: '3'
-
 services:
+  app:
+    build: .
+    environment:
+      - LOCAL_DATABASE_HOST=postgres
+      - RAILS_ENV=development
+      - REDIS_URL=redis://redis:6379/0
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    depends_on:
+      - postgres
+      - redis
+      - chrome-server
+
   postgres:
     image: postgres
     environment:
       - POSTGRES_PASSWORD=
       - POSTGRES_USER=root
       - POSTGRES_HOST_AUTH_METHOD=trust
+    volumes:
+      - postgres-volume:/var/lib/postgresql/data
 
   redis:
     image: redis
 
-  app:
-    build:
-      context: .
-    environment:
-      - LOCAL_DATABASE_HOST=postgres
-      - RAILS_ENV=development
-      - REDIS_URL=redis://redis:6379/0
-    volumes:
-      - .:/app
+  chrome-server:
+    image: selenium/standalone-chrome:96.0
     ports:
-      - "3000:3000"
-    depends_on:
-      - postgres
-      - redis
+      - "7900:7900" # VNC client
+
+volumes:
+  postgres-volume:
+

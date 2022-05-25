@@ -27,8 +27,7 @@ RUN bundle install
 
 COPY . ./
 
-RUN bundle exec rake assets:precompile
-
 ENTRYPOINT ["./docker-entrypoint.sh"]
+CMD ["bin/rails", "s", "-b", "0.0.0.0"]
 
-CMD ["start-dev-server"]
+
