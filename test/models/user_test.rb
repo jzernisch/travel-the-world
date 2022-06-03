@@ -17,17 +17,15 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "email must be unique" do
-    user1 = User.new(default_user_params)
-    assert user1.save
-
-    user2 = User.new(default_user_params)
+    user1 = users(:one)
+    user2 = User.new(default_user_params.merge(email: user1.email))
     assert_not user2.valid?
   end
 
   test "email is downcased before save" do
-    user = User.new(default_user_params.merge(email: 'FOO@bar.com'))
+    user = User.new(default_user_params.merge(email: 'admIN@Example.com'))
     user.save
-    assert_equal 'foo@bar.com', user.email
+    assert_equal 'admin@example.com', user.email
   end
 
   test "password update requires confirmation" do
@@ -41,17 +39,17 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "user can be authenticated with correct password" do
-    user = User.new(default_user_params.merge(password: 'password', password_confirmation: 'password'))
+    user = users(:one)
     assert_equal user, user.authenticate('password')
   end
 
   test "user cannot be authenticated with incorrect password" do
-    user = User.new(default_user_params.merge(password: 'password', password_confirmation: 'password'))
+    user = users(:one)
     assert_not user.authenticate('wrong_password')
   end
 
   def default_user_params
-    { email: 'foo@bar.com', password: 'password', password_confirmation: 'password' }
+    { email: 'admin@example.com', password: 'password', password_confirmation: 'password' }
   end
 
 end
