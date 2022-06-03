@@ -2,4 +2,5 @@
 
 jan:
   email: jan.zernisch@gmail.com
+  password_digest: <%= BCrypt::Password.create("password", cost: 4) %>
 
