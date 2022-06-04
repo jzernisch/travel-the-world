@@ -2,11 +2,6 @@ require "test_helper"
 
 class SessionsControllerTest < ActionDispatch::IntegrationTest
   class NewTest < self
-    test 'sessions#new shows no logout button when not logged in' do
-      get '/login'
-      assert_select "button", text: "Logout", count: 0
-    end
-
     test 'sessions#new redirects to root when already logged in' do
       login_with_valid_credentials
       get '/login'
@@ -56,12 +51,6 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
       assert_equal user.id, session[:current_user_id]
     end
 
-    test 'sessions#create shows a logout button after successful login' do
-      login_with_valid_credentials
-      follow_redirect!
-      assert_select "button", text: "Logout"
-    end
-
     test 'sessions#create login shows a flash alert when already logged in' do
       login_with_valid_credentials
       post '/login'
@@ -85,12 +74,6 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
       login_with_valid_credentials
       delete '/logout'
       assert_equal 'You have been signed out', flash[:notice]
-    end
-
-    test 'sessions#destroy hides the logout button' do
-      login_with_valid_credentials
-      delete '/logout'
-      assert_select "button", text: "Logout", count: 0
     end
   end
 
