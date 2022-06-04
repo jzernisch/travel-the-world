@@ -1,13 +1,12 @@
 class ApplicationController < ActionController::Base
+  helper_method :signed_in?
 
    private
 
   def authenticate_user!
-    redirect_to login_path unless signed_in?
-  end
-
-  def redirect_if_authenticated
-    redirect_to root_path if signed_in?
+    unless signed_in?
+      redirect_to login_path, alert: 'Please sign in first'
+    end
   end
 
   def signed_in?

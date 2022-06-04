@@ -28,4 +28,16 @@ class LoginTest < ApplicationSystemTestCase
 
     assert_selector "h1", text: "Login"
   end
+
+  test "logout after logging in" do
+    visit 'login'
+
+    fill_in 'user_email', with: 'foo@bar.com'
+    fill_in 'user_password', with: 'password'
+
+    click_on 'Sign In'
+    click_on 'Logout'
+
+    assert_selector "h1", text: "Login"
+  end
 end
