@@ -13,9 +13,22 @@ Also see below for a `docker compose`-based setup.
 
 `rails db:create`
 
-## Start development server
+## Local development
+
+To start Rails development server:
 
 `bin/dev`
+
+To run tests:
+
+`rails test`
+
+(one should set `export HOSTNAME=localhost` for tests to run, not sure why. Fixme!).
+
+To run system tests:
+
+`rails test:system`
+(do not know how to run them, need to add description here - Fixme!).
 
 ### Local development in Docker
 
