@@ -1,6 +1,6 @@
 require "application_system_test_case"
 
-class LoginPageTest < ApplicationSystemTestCase
+class HomePageTest < ApplicationSystemTestCase
   test "visiting the home page" do
     visit "/"
 
